@@ -1,0 +1,18 @@
+--  Use the following SQL statement to insert data to your table.
+INSERT INTO daily_sales
+VALUES
+(DATE '2024-01-15', 'VR', 300.00),
+(DATE '2024-01-15', 'Keyboard', 100.00),
+(DATE '2024-01-16', 'Mouse', 1350.00)
+
+
+--UPDATE
+UPDATE daily_sales
+SET sales_amount = 950.00
+WHERE product_category = 'Laptop'
+
+
+
+--DELETE
+DELETE FROM daily_sales
+WHERE product_category = 'Laptop'
