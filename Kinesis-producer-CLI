@@ -1,0 +1,46 @@
+--Kinesis producer CLI looped
+
+for i in {1..400}; do
+  age=$((20 + i))
+  aws kinesis put-record \
+    --stream-name ingestion-to-s3tables \
+    --partition-key pk$i \
+    --data "{\"name\": \"name$i\", \"age\": \"$age\"}" \
+    --cli-binary-format raw-in-base64-out
+
+
+
+-- or you can use this 
+
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk11 --data '{"name": "name11", "age": "31"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk12 --data '{"name": "name12", "age": "32"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk13 --data '{"name": "name13", "age": "33"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk14 --data '{"name": "name14", "age": "34"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk15 --data '{"name": "name15", "age": "35"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk16 --data '{"name": "name16", "age": "36"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk17 --data '{"name": "name17", "age": "37"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk18 --data '{"name": "name18", "age": "38"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk19 --data '{"name": "name19", "age": "39"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk20 --data '{"name": "name20", "age": "40"}' --cli-binary-format raw-in-base64-out
+
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk21 --data '{"name": "name21", "age": "41"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk22 --data '{"name": "name22", "age": "42"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk23 --data '{"name": "name23", "age": "43"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk24 --data '{"name": "name24", "age": "44"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk25 --data '{"name": "name25", "age": "45"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk26 --data '{"name": "name26", "age": "46"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk27 --data '{"name": "name27", "age": "47"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk28 --data '{"name": "name28", "age": "48"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk29 --data '{"name": "name29", "age": "49"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk30 --data '{"name": "name30", "age": "50"}' --cli-binary-format raw-in-base64-out
+
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk31 --data '{"name": "name31", "age": "51"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk32 --data '{"name": "name32", "age": "52"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk33 --data '{"name": "name33", "age": "53"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk34 --data '{"name": "name34", "age": "54"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk35 --data '{"name": "name35", "age": "55"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk36 --data '{"name": "name36", "age": "56"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk37 --data '{"name": "name37", "age": "57"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk38 --data '{"name": "name38", "age": "58"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk39 --data '{"name": "name39", "age": "59"}' --cli-binary-format raw-in-base64-out
+aws kinesis put-record --stream-name ingestion-to-s3tables --partition-key pk40 --data '{"name": "name40", "age": "60"}' --cli-binary-format raw-in-base64-out
