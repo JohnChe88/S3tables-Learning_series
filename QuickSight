@@ -1,0 +1,79 @@
+--CLI to map Glue catalog to S3 tables namespace
+
+aws glue create-database --region <region> --catalog-id "<Accountid>" --database-input \
+ '{
+    "Name": “regional_sales”,
+    "TargetDatabase": {
+        "CatalogId": "<Accountid>:s3tablescatalog/regional-sales-analysis",
+        "DatabaseName": "regional_sales"
+  },
+    "CreateTableDefaultPermissions": []
+}'
+
+--table DDL
+CREATE TABLE IF NOT EXISTS `regional_sales`.`sales_region` (
+  product STRING,
+  amount DOUBLE,
+  quantity INT,
+  region STRING,
+  salesperson STRING
+)
+PARTITIONED BY (region)
+TBLPROPERTIES ('table_type' = 'iceberg'
+)
+
+
+--Insert
+INSERT INTO "regional_sales"."sales_region"
+VALUES
+  ('Laptop', 900.00, 2, 'East', 'Alice Smith'),
+  ('Monitor', 250.00, 1, 'East', 'Bob Lee'),
+  ('Keyboard', 60.00, 5, 'East', 'Carol Jones'),
+  ('Mouse', 25.00, 10, 'East', 'David Kim'),
+  ('Headphones', 150.00, 3, 'East', 'Eva Brown'),
+  ('Printer', 300.00, 1, 'East', 'Frank White'),
+  ('Tablet', 450.00, 4, 'East', 'Grace Hall'),
+  ('Router', 120.00, 2, 'East', 'Henry Green'),
+  ('Speaker', 180.00, 6, 'East', 'Ivy Clark'),
+  ('Webcam', 90.00, 8, 'East', 'Jack Adams'),
+  ('Laptop', 1050.00, 1, 'West', 'Karen Hill'),
+  ('Monitor', 375.00, 2, 'West', 'Liam Scott'),
+  ('Keyboard', 70.00, 3, 'West', 'Mia Young'),
+  ('Mouse', 30.00, 15, 'West', 'Noah King'),
+  ('Headphones', 160.00, 4, 'West', 'Olivia Wright'),
+  ('Printer', 320.00, 1, 'West', 'Paul Evans'),
+  ('Tablet', 480.00, 2, 'West', 'Quinn Baker'),
+  ('Router', 130.00, 3, 'West', 'Ryan Cook'),
+  ('Speaker', 190.00, 5, 'West', 'Sofia Reed'),
+  ('Webcam', 95.00, 7, 'West', 'Tom Price'),
+  ('Laptop', 1200.00, 2, 'North', 'Uma Ford'),
+  ('Monitor', 400.00, 1, 'North', 'Victor Gray'),
+  ('Keyboard', 80.00, 4, 'North', 'Wendy Stone'),
+  ('Mouse', 35.00, 12, 'North', 'Xander Bell'),
+  ('Headphones', 170.00, 3, 'North', 'Yara Wells'),
+  ('Printer', 340.00, 1, 'North', 'Zane Brooks'),
+  ('Tablet', 500.00, 3, 'North', 'Ava Cole'),
+  ('Router', 140.00, 2, 'North', 'Blake Fisher'),
+  ('Speaker', 200.00, 6, 'North', 'Clara Hayes'),
+  ('Webcam', 100.00, 9, 'North', 'Derek Shaw'),
+  ('Laptop', 1350.00, 3, 'South', 'Eli Parker'),
+  ('Monitor', 420.00, 2, 'South', 'Fiona Rice'),
+  ('Keyboard', 85.00, 6, 'South', 'George Miles'),
+  ('Mouse', 40.00, 20, 'South', 'Hazel Woods'),
+  ('Headphones', 180.00, 5, 'South', 'Ian Cross'),
+  ('Printer', 360.00, 1, 'South', 'Jenna Fox'),
+  ('Tablet', 520.00, 4, 'South', 'Kyle Hunt'),
+  ('Router', 150.00, 3, 'South', 'Luna Reed'),
+  ('Speaker', 210.00, 7, 'South', 'Mason Ford'),
+  ('Webcam', 105.00, 10, 'South', 'Nora Hill'),
+  ('Laptop', 1100.00, 2, 'Central', 'Owen Cruz'),
+  ('Monitor', 380.00, 1, 'Central', 'Penelope Ward'),
+  ('Keyboard', 75.00, 4, 'Central', 'Quincy Lane'),
+  ('Mouse', 28.00, 18, 'Central', 'Riley Dean'),
+  ('Headphones', 155.00, 3, 'Central', 'Sam Vega'),
+  ('Printer', 310.00, 1, 'Central', 'Tara Moss'),
+  ('Tablet', 470.00, 2, 'Central', 'Umar Khan'),
+  ('Router', 125.00, 2, 'Central', 'Vera Hicks'),
+  ('Speaker', 185.00, 5, 'Central', 'Wade Sims'),
+  ('Webcam', 92.00, 8, 'Central', 'Zara Poole');
+
