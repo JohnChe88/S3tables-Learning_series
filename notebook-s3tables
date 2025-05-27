@@ -1,0 +1,48 @@
+%%configure
+{
+    "conf": {
+        "datalake-formats": "iceberg",
+        "user-jars-first": "true"
+    },
+    "jars": [
+        "s3://libfiles/s3-tables-catalog-for-iceberg-runtime-0.1.3.jar"
+    ]
+}
+
+
+
+
+import sys
+from awsglue.transforms import *
+from awsglue.utils import getResolvedOptions
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
+from pyspark.conf import SparkConf  
+
+job_name = "S3-table-notebook-job" # Or get from args if running as a real job
+args = {"JOB_NAME": job_name} # Mock args for notebook context if needed; real jobs get this via getResolvedOptions
+
+job = Job(glueContext)
+job.init(job_name, args) # Use the actual job name and args
+# Spark config - S3 Tables
+MY_TABLE_BUCKET_ARN="arn:aws:s3tables:<region>:<AWs-account>:bucket/user-activity-bucket"
+
+conf = SparkConf()
+conf.set("spark.sql.catalog.s3tablesbucket", "org.apache.iceberg.spark.SparkCatalog")
+conf.set("spark.sql.catalog.s3tablesbucket.catalog-impl", "software.amazon.s3tables.iceberg.S3TablesCatalog")
+conf.set("spark.sql.catalog.s3tablesbucket.warehouse", MY_TABLE_BUCKET_ARN)
+conf.set("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions")
+
+sparkContext = SparkContext(conf=conf)
+glueContext = GlueContext(sparkContext)
+spark = glueContext.spark_session
+
+
+spark.sql("SHOW DATABASES").show()
+
+
+
+
+
+
+
