@@ -1,0 +1,22 @@
+aws s3tables put-table-maintenance-configuration \
+  --table-bucket-arn arn:aws:s3tables:<region>:111111111:bucket/user-activity-bucket  \
+  --namespace user_activities \
+  --name user_activity_stream_tb \
+  --type icebergSnapshotManagement \
+  --value '{"status":"enabled","settings":{"icebergSnapshotManagement":{"minSnapshotsToKeep":10,"maxSnapshotAgeHours”:200}}}’
+
+
+
+aws s3tables get-table-maintenance-configuration \
+  --table-bucket-arn arn:aws:s3tables:<region>:111111111:bucket/user-activity-bucket \
+  --namespace user_activities \
+  --name user_activity_stream_tb
+
+aws s3tables put-table-maintenance-configuration \
+  --table-bucket-arn arn:aws:s3tables:<region>:111111111:bucket/user-activity-bucket \
+  --namespace user_activities \
+  --name user_activity_streamaws s3tables put-table-maintenance-configuration \
+  --type icebergSnapshotManagement \
+  --value '{"status":"enabled","settings":{"icebergSnapshotManagement":{"minSnapshotsToKeep":10,"maxSnapshotAgeHours":2500}}}'
+
+
